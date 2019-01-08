@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Cube Application</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content = "width=device-width, initial-scale=1.0">
+	
+	<style type="text/css">
+		h1 {
+		  padding-left: 20px;
+		}  
+         
+         .controls{
+          text-align: center;
+         }
+         .stopwatch{
+          
+           font-family: monospace;
+             font-size: 120px;
+             text-align: center;
+         }
+
+         h5{
+           padding-top: 100px;
+           padding-left: 1000px;
+           visibility:hidden;
+         }
+	</style>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+
+  </head>
+
+  
+<body>
+    
+
+    
+	<nav class="navbar fixed-top navbar-dark navbar-expand bg-dark" id="ss">
+  <a class="navbar-brand" href="index1.html">
+  Cube™
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="F2L.html">F2L</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="OLL.html">OLL</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="PLL.html">PLL</a>
+      </li>
+    
+	  
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Advance
+        </a>
+        <div class="dropdown-menu dropdown-danger" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">COLL   (Corners Of Last Layer)</a>
+          <a class="dropdown-item" href="#">VLS   (Valk Last Slot)</a>
+          <a class="dropdown-item" href="#">MW   (Magic Wonderful)</a>
+          <a class="dropdown-item" href="#">WV   (Winter Variation)</a></div>
+
+        <li class="nav-item">
+           <a class="nav-link" href="#">Timer</a>
+        </li> 
+
+    </ul>
+
+    <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">Contact</a>
+            </li>
+        </ul>
+  </div></nav>
+
+  <br><br><br><br><br><br><br><br>
+  
+
+        <div class="stopwatch">
+            <p><span id="seconds">00</span>:<span id="tens">00</span></p>
+            </div> 
+            
+        <nav class="controls">
+          <button type="button" class="btn btn-lg btn-outline-success" id="button-start" >Start</button>
+          <button type="button" class="btn btn-lg btn-outline-danger" id="button-stop">Stop</button>
+          <button type="button" class="btn btn-lg btn-outline-primary" id="button-reset">Reset</button>
+      </nav>
+      <ul class="results"></ul>
+
+      <h5 id="average">Average of</h5>
+
+        <script>
+   
+   window.onload = function () {
+  
+  var x=-1,ref=0;
+  var final;
+  var seconds = 00; 
+  var tens = 00; 
+  var time=[];
+  var appendTens = document.getElementById("tens")
+  var appendSeconds = document.getElementById("seconds")
+  var buttonStart = document.getElementById('button-start');
+  var buttonStop = document.getElementById('button-stop');
+  var buttonReset = document.getElementById('button-reset');
+  var displayavg=document.getElementById('average');
+  var Interval ;
+
+  buttonStart.onclick = function() {
+    
+     clearInterval(Interval);
+     Interval = setInterval(startTimer, 10);
+  }
+  
+    buttonStop.onclick = function() {
+       clearInterval(Interval);
+       time.push(seconds+(tens/100));
+       x+=1;
+
+         ref+=time[x];
+         final=Math.round(((ref / (x+1))) * 100) / 100;
+
+         displayavg.innerHTML="Average of "+(x+1)+": "+ final;
+         displayavg.style.visibility="visible";
+
+  }
+  
+
+  buttonReset.onclick = function() {
+     clearInterval(Interval);
+    tens = "00";
+  	seconds = "00";
+    appendTens.innerHTML = tens;
+  	appendSeconds.innerHTML = seconds;
+  }
+  
+   
+  
+  function startTimer () {
+    tens++; 
+    
+    if(tens < 9){
+      appendTens.innerHTML = "0" + tens;
+    }
+    
+    if (tens > 9){
+      appendTens.innerHTML = tens;
+      
+    } 
+    
+    if (tens > 99) {
+      seconds++;
+      appendSeconds.innerHTML = "0" + seconds;
+      tens = 0;
+      appendTens.innerHTML = "0" + 0;
+    }
+    
+    if (seconds > 9){
+      appendSeconds.innerHTML = seconds;
+    }
+  
+  }
+  
+
+}
+</script>
+            
+              
+                </script>
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+  </body>
+</html>
