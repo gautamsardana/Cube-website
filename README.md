@@ -17,7 +17,7 @@ Solution to existing problems:
 
 Steps to run the website:
 1.	Install wampserver so that we can run the php file since php is a server side language.
-2.	Put all the given files inside c://wamp64/www.
+2.	Put all the given files inside c://wamp64/www/
 3.	Run wampserver.
 4.	Open a web browser.
 5.	Type the url in the address bar as “Localhost/index.html” without the quotes.
